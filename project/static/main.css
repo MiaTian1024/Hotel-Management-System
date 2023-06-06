@@ -5,13 +5,14 @@
 
 /* other css file imports */
 @import url("css/home.css");
-/* @import url("css/login.css"); */
+@import url("css/login.css"); 
 /* @import url("css/dashboard.css"); */
 
 
 /* CSS variables for reusablity across all files (including above imported) */
 :root {
     /* ===== Colors ===== */
+    --nav-color: #925872;
     --primary-color: #0E4BF1;
     --panel-color: #FFF;
     --text-color: #000;
