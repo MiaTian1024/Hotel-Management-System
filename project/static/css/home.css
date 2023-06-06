@@ -182,9 +182,6 @@
     text-align: center;
   }
   
-  .portfolio .cards .card {
-    padding: 0 0 20px;
-  }
   
   .services .card img {
     width: 120px;
@@ -194,13 +191,6 @@
     object-fit: cover;
   }
   
-  .portfolio .card img {
-    width: 100%;
-    padding-bottom: 10px;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    border-radius: 7px;
-  }
   
   .cards .card p {
     padding: 0 15px;
@@ -302,7 +292,7 @@
       display: block;
       height: 100vh;
       top: 75px;
-      background: #333;
+      background: var(--nav-color);
       transition: left 0.3s ease;
     }
   
