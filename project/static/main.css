@@ -6,7 +6,7 @@
 /* other css file imports */
 @import url("css/home.css");
 @import url("css/login.css"); 
-/* @import url("css/dashboard.css"); */
+@import url("css/dashboard.css");
 
 
 /* CSS variables for reusablity across all files (including above imported) */
@@ -39,6 +39,7 @@
 }
 
 body {
+  min-height: 100vh;
   background: #f2f2f2;
 }
 

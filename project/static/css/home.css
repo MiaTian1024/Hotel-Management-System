@@ -1,5 +1,5 @@
 
-  header {
+  .header {
     position: fixed;
     top: 0;
     left: 0;
@@ -50,7 +50,7 @@
   }
 
   
-  header a, footer a {
+  .header a, .footer a {
     margin-left: 40px;
     text-decoration: none;
     color: #fff;
@@ -59,7 +59,7 @@
     display: inline-block;
   }
   
-  header a:hover, footer a:hover {
+  .header a:hover, .footer a:hover {
     color: #ddd;
   }
   
@@ -125,22 +125,22 @@
     background: rgba(255,255,255,0.3);
   }
   
-  section {
+  .homepage .rooms .about .contact {
     display: flex;
     align-items: center;
     flex-direction: column;
     padding: 80px 0 0;
   }
   
-  section h2 {
+  .homepage .rooms .about .contact h2 {
     font-size: 2rem;
   }
   
-  section > p {
+  .homepage .rooms .about .contact > p {
     text-align: center;
   }
   
-  section .cards {
+  .services .cards {
     display: flex;
     flex-wrap: wrap;
     max-width: 1200px;
@@ -149,7 +149,7 @@
     justify-content: space-between;
   }
   
-  section.about {
+  .about {
     margin: 0 auto;
     max-width: 1200px;
   }
@@ -171,7 +171,7 @@
     padding-left: 20px;
   }
   
-  section .cards .card {
+  .rooms.cards .card {
     background: #fff;
     padding: 40px 15px;
     list-style: none;
@@ -183,7 +183,7 @@
   }
   
   
-  .services .card img {
+  .rooms .card img {
     width: 120px;
     height: 120px;
     margin-bottom: 20px;
@@ -260,7 +260,7 @@
     background: #6d495e;
   }
   
-  footer {
+  .footer {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -268,7 +268,7 @@
     padding: 20px 0;
   }
   
-  footer div {
+  .footer div {
     padding: 0 10px;
     max-width: 1200px;
     width: 100%;
@@ -276,11 +276,11 @@
     justify-content: space-between;
   }
   
-  footer span {
+  .footer span {
     color: #fff;
   }
   
-  footer a {
+  .footer a {
     padding: 0;
   }
   
@@ -308,11 +308,11 @@
       display: block;
     }
   
-    section > p {
+    .homepage .rooms .about .contact > p {
       text-align: center;
     }
   
-    section .cards .card {
+    .rooms .cards .card {
       width: calc(100% / 2 - 15px);
       margin-bottom: 30px;
     }
@@ -344,13 +344,13 @@
       margin-top: 40px;
     }
   
-    footer a {
+    .footer a {
       height: 0;
     }
   }
   
   @media screen and (max-width: 560px) {
-    section .cards .card {
+    .rooms .cards .card {
       width: 100%;
       margin-bottom: 30px;
     }
