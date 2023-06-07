@@ -5,14 +5,10 @@ INSERT INTO Roles (role_id, role_name) VALUES
   (1, 'admin'),
   (2, 'customer');
 
--- Insert dummy data into the Customer table
-INSERT INTO Customer (customer_id, customer_Fname, customer_Lname, customer_email, customer_password, role_id) VALUES
+-- Insert dummy data into the User table
+INSERT INTO user (user_id, user_Fname, user_Lname, user_email, user_password, role_id) VALUES
   (1, 'John', 'Doe', 'johndoe@example.com', 'password123', 2),
   (2, 'Jane', 'Smith', 'janesmith@example.com', 'password456', 2);
-
--- Insert dummy data into the Admin table
-INSERT INTO Admin (admin_id, admin_Fname, admin_Lname, admin_email, admin_password, role_id) VALUES
-  (1, 'Admin', 'User', 'admin@example.com', 'adminpass', 1);
 
 -- Insert dummy data into the RoomTypes table
 INSERT INTO RoomTypes (type_id, type_name, price) VALUES
@@ -37,6 +33,6 @@ INSERT INTO RoomInventory (inventory_id, room_type_id, available_rooms) VALUES
   (3, 3, 2);
 
 -- Insert dummy data into the Bookings table
-INSERT INTO Bookings (booking_id, customer_id, room_id, check_in_date, check_out_date, service_id, service_amount) VALUES
+INSERT INTO Bookings (booking_id, user_id, room_id, check_in_date, check_out_date, service_id, service_amount) VALUES
   (1, 1, 2, '2023-06-10', '2023-06-12', 1, 10.00),
   (2, 2, 1, '2023-06-15', '2023-06-20', 2, 20.00);
