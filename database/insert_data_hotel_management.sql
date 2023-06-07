@@ -6,9 +6,9 @@ INSERT INTO Roles (role_id, role_name) VALUES
   (2, 'customer');
 
 -- Insert dummy data into the User table
-INSERT INTO user (user_id, user_Fname, user_Lname, user_email, user_password, role_id) VALUES
-  (1, 'John', 'Doe', 'johndoe@example.com', 'password123', 2),
-  (2, 'Jane', 'Smith', 'janesmith@example.com', 'password456', 2);
+INSERT INTO Users (user_id, user_name, user_email, user_password, role_id) VALUES
+  (1, 'John', 'johndoe@example.com', 'password123', 2),
+  (2, 'Jane', 'janesmith@example.com', 'password456', 2);
 
 -- Insert dummy data into the RoomTypes table
 INSERT INTO RoomTypes (type_id, type_name, price) VALUES

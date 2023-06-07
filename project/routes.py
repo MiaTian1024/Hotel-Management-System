@@ -6,12 +6,14 @@ import re
 import bcrypt
 from datetime import datetime
 
-dbconn = None
-connection = None
-
 # Change this to your secret key (can be anything, it's for extra protection)
 app.secret_key = 'your_secret_key'
 
+app.config['SECRET_KEY'] = 'your_secret_key'
+app.config['SESSION_TYPE'] = 'filesystem'
+
+dbconn = None
+connection = None
 def getCursor():
     global dbconn
     global connection
@@ -29,41 +31,41 @@ def home():
 def login():
     # Output message if something goes wrong...
     msg = ''
-    # Check if "username" and "password" POST requests exist (user submitted form)
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+    # Check if "email" and "password" POST requests exist (user submitted form)
+    if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
         # Create variables for easy access
-        username = request.form['username']
+        email = request.form['email']
         user_password = request.form['password']
         # Check if account exists 
-        connection = getCursor()
-        connection.execute('select * from member where username = %s', (username,))
+        dbconn = getCursor()
+        dbconn.execute(queries.login(), (email,))
         # Fetch one record and return result
-        account = connection.fetchone()
-        if account is not None:
-            password = account[2]
-            if bcrypt.checkpw(user_password.encode('utf-8'),password.encode('utf-8')):
-            # If account exists in accounts table in out database
+        user = dbconn.fetchone()
+        if user is not None:
+            db_password = user[3]
+            if bcrypt.checkpw(user_password.encode('utf-8'),db_password.encode('utf-8')):
+            # If user exists in Users table in out database
             # Create session data, we can access this data in other routes
                 session['loggedin'] = True
-                session['id'] = account[0]
-                session['username'] = account[1]
+                session['id'] = user[0]
+                session['role_id'] = user[4]
                 # Redirect to member page   
-                return redirect(url_for('member'))
+                return redirect(url_for('dashboard'))
             else:
                 # password incorrect
-                msg = 'Incorrect password!'
+                msg = 'Incorrect password! Try again.'
         else:
-            # Account doesnt exist or username incorrect
-            msg = 'Incorrect username'
+            # user doesnt exist or email incorrect
+            msg = 'Incorrect email'
     # Show the login form with message (id any)
-    return render_template('login.html', msg=msg)
+    return render_template('login.html',title="login", msg=msg)
 
 @app.route('/logout')
 def logout():
     # Remove session data, this will log the user out
     session.pop('loggedin', None)
     session.pop('id', None)
-    session.pop('username', None)
+    session.pop('role_id', None)
     # Redirect to login page
     return redirect(url_for('login'))
 
@@ -78,11 +80,11 @@ def register():
         password = request.form['password']
         email = request.form['email']
         # Check if account exists
-        connection = getCursor()
-        connection.execute('select * from member where username = %s', (username,))
-        account = connection.fetchone()
+        dbconn = getCursor()
+        dbconn.execute(queries.login(), (email,))
+        user = dbconn.fetchone()
         # If account exists show error and validation checks
-        if account:
+        if user:
             msg = 'Account already exists!'
         elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
             msg = 'Invalid email address!'
@@ -91,16 +93,16 @@ def register():
         elif not username or not password or not email:
             msg = 'Please fill out the form!'
         else:
-            # Account doesnt exists and the form data is valid, now insert new account into accounts table
+            # user doesnt exists and the form data is valid, now insert new account into accounts table
             hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
             print(hashed)
-            connection.execute('insert into member (username, password, email) values (%s, %s, %s)', (username, hashed, email,))
+            dbconn.execute(queries.register(), (username, hashed, email, 2, ))
             msg = 'You have successfully registered!'
-    elif request.method == 'POST':
-        # Form is empty...(no POST data)
-        msg = 'Please fill out the form!'
+        print(msg)   
+        return render_template('login.html',title="login", msg=msg)
     # Show registration form with message (if any)
-    return render_template('register.html', msg=msg)
+    return render_template('login.html', title="login", msg=msg)
+
 
 @app.route("/dashboard")
 def dashboard():
