@@ -106,4 +106,17 @@ def register():
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template("dashboard.html")
+    dbconn = getCursor()
+    if not session:
+        msg = 'Please login first!'
+        return render_template('login.html',title="login", msg=msg)
+    
+    elif session['role_id'] == 1:  # The role ID for admin is 1
+        dbconn.execute(queries.adminInfo(), (session['id'],))
+        adminInfo = dbconn.fetchone()
+        return render_template("AdminDashboard.html", title="Admin Dashboard", session=session, adminInfo=adminInfo )
+    elif session['role_id'] == 2: #The role ID for approval manager is 2
+        dbconn.execute(queries.customerInfo(), (session['id'],))
+        customerInfo = dbconn.fetchone()
+        return render_template("dashboard.html", title="dashboard", session=session, customerInfo=customerInfo )
+    

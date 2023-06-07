@@ -125,22 +125,23 @@
     background: rgba(255,255,255,0.3);
   }
   
-  .homepage .rooms .about .contact {
+  .homepage, .rooms, .about, .contact {
     display: flex;
     align-items: center;
     flex-direction: column;
     padding: 80px 0 0;
   }
   
-  .homepage .rooms .about .contact h2 {
+  
+  .homepage h2, .rooms h2, .about h2, .contact h2 {
     font-size: 2rem;
   }
   
-  .homepage .rooms .about .contact > p {
+  .homepage >p, .rooms > p, .about >p, .contact > p {
     text-align: center;
   }
   
-  .services .cards {
+  .rooms .cards {
     display: flex;
     flex-wrap: wrap;
     max-width: 1200px;
@@ -171,7 +172,7 @@
     padding-left: 20px;
   }
   
-  .rooms.cards .card {
+  .rooms .cards .card {
     background: #fff;
     padding: 40px 15px;
     list-style: none;
