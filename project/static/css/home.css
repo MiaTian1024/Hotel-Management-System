@@ -135,6 +135,7 @@
   
   .homepage h2, .rooms h2, .about h2, .contact h2 {
     font-size: 2rem;
+    margin-top: 30px;
   }
   
   .homepage >p, .rooms > p, .about >p, .contact > p {
@@ -174,33 +175,61 @@
   
   .rooms .cards .card {
     background: #fff;
-    padding: 40px 15px;
     list-style: none;
     border-radius: 5px;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.04);
     margin-bottom: 40px;
     width: calc(100% / 3 - 30px);
     text-align: center;
+  
   }
   
   
   .rooms .card img {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 20px;
-    border-radius: 100%;
+    width: 100%;
+    padding-bottom: 10px;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
+    border-radius: 7px;
   }
-  
   
   .cards .card p {
     padding: 0 15px;
     margin-top: 5px;
   }
   
+  .room-info{
+    height: 120px;
+  }
+
+  .room-info p{
+    font-size: 14px;
+  }
+
+  .room-price{
+    height:30px;
+  }
+  .room-button{
+    justify-self: end;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height:40px;
+    background-color: var(--nav-color);
+    color: #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .room-button h3{
+    font-size: 22px;
+  }
+
   .about .row {
     padding: 0 10px;
   }
+
+ 
   
   .contact .row {
     margin: 60px 0 90px;

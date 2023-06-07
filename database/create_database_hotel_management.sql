@@ -20,7 +20,8 @@ CREATE TABLE Users (
 CREATE TABLE RoomTypes (
   type_id INT PRIMARY KEY AUTO_INCREMENT,
   type_name VARCHAR(50),
-  price DECIMAL(10, 2)
+  price DECIMAL(10, 2),
+  info VARCHAR(255)
 );
 
 CREATE TABLE Room (

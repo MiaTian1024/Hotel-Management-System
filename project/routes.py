@@ -25,7 +25,10 @@ def getCursor():
 
 @app.route("/")
 def home():
-    return render_template("home.html", title="homepage")
+    dbconn = getCursor()
+    dbconn.execute(queries.roomInfo())
+    roomInfo = dbconn.fetchall()
+    return render_template("home.html", title="homepage", roomInfo=roomInfo)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -118,5 +121,5 @@ def dashboard():
     elif session['role_id'] == 2: #The role ID for approval manager is 2
         dbconn.execute(queries.customerInfo(), (session['id'],))
         customerInfo = dbconn.fetchone()
-        return render_template("dashboard.html", title="dashboard", session=session, customerInfo=customerInfo )
+        return render_template("dashboard.html", title="Dashboard", session=session, customerInfo=customerInfo )
     

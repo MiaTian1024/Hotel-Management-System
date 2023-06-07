@@ -16,3 +16,7 @@ def adminInfo():
 def customerInfo():
     query=('select * from Users where role_id = 2 and user_id = %s')
     return query
+
+def roomInfo():
+    query=('select * from RoomTypes')
+    return query
