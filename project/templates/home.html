@@ -41,29 +41,37 @@
     <section class="rooms" id="rooms">
      
       <h2>Our Rooms</h2>
-      <p>Explore our wide range of camping gear services.</p>
+      <p>Explore our wide range of rooms designed to cater to every guest's needs and preferences.</p>
      
       <ul class="cards">  
         {% for info in roomInfo %}   
         <li class="card">
-          {% if info[0] == 1 %}
-          <img src="../static/image/standard.jpg" alt="img">
-          {% elif info[0] == 2%}
-          <img src="../static/image/deluxe.jpg" alt="img">
-          {% elif info[0] == 3%}
-          <img src="../static/image/suite.jpg" alt="img">
-          {% endif %}
-          <h3>{{info[1]}}</h3>
-          <div class="room-info">
-            <p>{{info[3]}}</p>  
+          <div class="room-image">
+            {% if info[0] == 1 %}
+            <img src="../static/image/standard.jpg" alt="img">
+            {% elif info[0] == 2%}
+            <img src="../static/image/deluxe.jpg" alt="img">
+            {% elif info[0] == 3%}
+            <img src="../static/image/suite.jpg" alt="img">
+            {% endif %}
           </div>
-          <div class="room-price">
-            <h3>Price: {{info[2]}}</h3>
-          </div>
-         
-          <div class="room-button">
-            <h3>LOGIN TO BOOK</h3>
-          </div>
+          <div class="room-detail">
+            <div class="room-info">
+              <span class="room-name">{{info[1]}}</span>
+              <p>{{info[3]}}</p>  
+            </div>
+            <div class="room-price">
+              <div class="price">
+                <span class="price_num"> $ {{info[2]}}</span>
+                <span class="price_letter">Per Night</span>
+              </div>
+            </div>
+          
+            <div class="room-button">
+              <div class="button-layer"></div>
+              <button>LOGIN TO BOOK</button>
+            </div>
+        </div>
         </li>
         {% endfor %}
       </ul>

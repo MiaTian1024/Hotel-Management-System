@@ -170,9 +170,13 @@ def dashboard():
     elif session['role_id'] == 2: #The role ID for approval manager is 2
         dbconn.execute(queries.customerInfo(), (session['id'],))
         customerInfo = dbconn.fetchone()
-        return render_template("dashboard.html", title="Dashboard", session=session, customerInfo=customerInfo )
+        dbconn.execute(queries.roomInfo())
+        roomInfo = dbconn.fetchall()
+        return render_template("dashboard.html", title="Dashboard", roomInfo=roomInfo, session=session, customerInfo=customerInfo )
     elif session["name"]:
-        return render_template("dashboard.html", title="Dashboard", session=session)
+        dbconn.execute(queries.roomInfo())
+        roomInfo = dbconn.fetchall()
+        return render_template("dashboard.html", title="Dashboard", roomInfo=roomInfo, session=session)
     
 @app.route("/bookings")
 def bookings():

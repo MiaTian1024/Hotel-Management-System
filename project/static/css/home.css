@@ -142,13 +142,89 @@
     text-align: center;
   }
   
+  
   .rooms .cards {
     display: flex;
     flex-wrap: wrap;
     max-width: 1200px;
     margin-top: 50px;
-    padding: 0 10px;
     justify-content: space-between;
+ 
+  }
+
+  .room-info .room-name{
+    font-size: 24px;
+    font-weight: 600;
+    color: #121011;
+  }
+
+
+  .room-price .room-option{
+    display: flex;
+    align-items: center;
+  }
+
+  .room-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+ 
+  .room-price .price{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .room-price .price .price_num{
+    font-size: 25px;
+    font-weight: 600;
+    color: #707070;
+  }
+  .room-price .price .price_letter{
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: -4px;
+    color: #707070;
+  }
+
+  .room-button{
+    height: 50px;
+    width: 100%;
+    border-radius: 25px;
+    margin-top: 30px;
+    overflow: hidden;
+  }
+
+  .room-button .button-layer{
+    position: absolute;
+    height: 100%;
+    width: 300%;
+    left: -100%;
+    background-image: linear-gradient(135deg,#8f357c, #a877a2,#465d92, #718f9b );
+    transition: all 0.4s ease;
+    border-radius: 25PX;
+  }
+
+  .room-button:hover .button-layer{
+    left:0;
+  }
+
+  .room-button button{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+
   }
   
   .about {
@@ -181,6 +257,9 @@
     margin-bottom: 40px;
     width: calc(100% / 3 - 30px);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+
   
   }
   
@@ -193,37 +272,6 @@
     border-radius: 7px;
   }
   
-  .cards .card p {
-    padding: 0 15px;
-    margin-top: 5px;
-  }
-  
-  .room-info{
-    height: 120px;
-  }
-
-  .room-info p{
-    font-size: 14px;
-  }
-
-  .room-price{
-    height:30px;
-  }
-  .room-button{
-    justify-self: end;
-    align-items: center;
-    justify-content: center;
-    width:100%;
-    height:40px;
-    background-color: var(--nav-color);
-    color: #fff;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-
-  .room-button h3{
-    font-size: 22px;
-  }
 
   .about .row {
     padding: 0 10px;

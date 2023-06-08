@@ -14,9 +14,9 @@ INSERT INTO Users (user_id, user_name, user_email, user_password, role_id) VALUE
   
 -- Insert dummy data into the RoomTypes table
 INSERT INTO RoomTypes (type_id, type_name, price, info) VALUES
-  (1, 'Standard Room', 100.00, 'Our Standard Rooms offer a comfortable and cozy stay with all the essential amenities. These rooms are perfect for budget-conscious travelers without compromising on quality and comfort.'),
-  (2, 'Deluxe Room', 150.00, 'Indulge in luxury and sophistication with our Deluxe Rooms. These spacious and elegantly designed rooms provide a blend of comfort and style. '),
-  (3, 'Suite', 250.00, 'Experience the pinnacle of luxury in our exquisite Suites. These expansive and lavishly furnished accommodations offer a separate living area and bedroom, providing ample space for relaxation and entertainment.');
+  (1, 'Standard Room', 100.00, 'Enjoy a relaxing stay in a well-appointed room with a warm ambiance.'),
+  (2, 'Deluxe Room', 150.00, 'Indulge in luxury and sophistication with Our Deluxe Rooms. '),
+  (3, 'Suite', 250.00, 'Experience the pinnacle of luxury in our exquisite Suites.');
 
 -- Insert dummy data into the Room table
 INSERT INTO Room (room_id, type_id, status) VALUES
