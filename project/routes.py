@@ -1,4 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, abort, redirect, url_for, session
+from google.oauth2 import id_token
+from google.auth.transport import requests
+import os
+import json
+import pathlib
+import requests
+from google.oauth2 import id_token
+from google_auth_oauthlib.flow import Flow
+from pip._vendor import cachecontrol
+import google.auth.transport.requests
 
 from project import app, queries, connect
 import mysql.connector
@@ -9,8 +19,18 @@ from datetime import datetime
 # Change this to your secret key (can be anything, it's for extra protection)
 app.secret_key = 'your_secret_key'
 
-app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SESSION_TYPE'] = 'filesystem'
+os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+
+client_secrets_file = os.path.join(pathlib.Path(__file__).parent, "client_secret.json")
+with open(client_secrets_file) as file:
+    data = json.load(file)
+GOOGLE_CLIENT_ID = data['web']['client_id']
+
+flow = Flow.from_client_secrets_file(
+    client_secrets_file=client_secrets_file,
+    scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", "openid"],
+    redirect_uri="http://127.0.0.1:5000/callback"
+)
 
 dbconn = None
 connection = None
@@ -63,15 +83,6 @@ def login():
     # Show the login form with message (id any)
     return render_template('login.html',title="login", msg=msg)
 
-@app.route('/logout')
-def logout():
-    # Remove session data, this will log the user out
-    session.pop('loggedin', None)
-    session.pop('id', None)
-    session.pop('role_id', None)
-    # Redirect to login page
-    return redirect(url_for('login'))
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     # Output message if something goes wrong...
@@ -107,13 +118,51 @@ def register():
     return render_template('login.html', title="login", msg=msg)
 
 
+@app.route("/GoogleLogin")
+def GoogleLogin():
+    authorization_url, state = flow.authorization_url()
+    session["state"] = state
+    return redirect(authorization_url)
+
+@app.route("/callback")
+def callback():
+    flow.fetch_token(authorization_response=request.url)
+
+    if not session["state"] == request.args["state"]:
+        abort(500)  # State does not match!
+
+    credentials = flow.credentials
+    request_session = requests.session()
+    cached_session = cachecontrol.CacheControl(request_session)
+    token_request = google.auth.transport.requests.Request(session=cached_session)
+
+    id_info = id_token.verify_oauth2_token(
+        id_token=credentials._id_token,
+        request=token_request,
+        audience=GOOGLE_CLIENT_ID
+    )
+
+    session['loggedin'] = True
+    session["id"] = id_info.get("sub")
+    session["name"] = id_info.get("name")
+    session["picture"] = id_info.get("picture")
+    session['role_id'] = 2
+    return redirect("/dashboard")
+
+@app.route('/logout')
+def logout():
+    # Remove session data, this will log the user out
+    session.clear()
+    # Redirect to login page
+    return redirect(url_for('login'))
+
+
 @app.route("/dashboard")
 def dashboard():
     dbconn = getCursor()
     if not session:
         msg = 'Please login first!'
         return render_template('login.html',title="login", msg=msg)
-    
     elif session['role_id'] == 1:  # The role ID for admin is 1
         dbconn.execute(queries.adminInfo(), (session['id'],))
         adminInfo = dbconn.fetchone()
@@ -122,4 +171,6 @@ def dashboard():
         dbconn.execute(queries.customerInfo(), (session['id'],))
         customerInfo = dbconn.fetchone()
         return render_template("dashboard.html", title="Dashboard", session=session, customerInfo=customerInfo )
+    elif session["name"]:
+        return render_template("dashboard.html", title="Dashboard", session=session)
     

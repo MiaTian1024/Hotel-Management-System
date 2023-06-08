@@ -64,7 +64,11 @@
       </div>
       <div class="profile-details">
         <img src="../static/image/profile.jpg" alt="" />
+        {% if customerInfo %}
         <span class="admin_name">{{customerInfo[1]}}</span>
+        {% else %}
+        <span class="admin_name">{{session["name"]}}</span>
+        {% endif %}
         <i class="bx bx-chevron-down"></i>
       </div>
     </nav>
