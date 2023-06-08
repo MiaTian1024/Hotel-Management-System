@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "sidebar.html" %} 
+
+<div class="wrapper">
+
+<main class="table">
+    <section class="table__header">
+        <h1>Room Types</h1>
+        <div class="input-group">
+            <input type="search" placeholder="Search Data...">
+            <img src="static/image/search.png" alt="">
+        </div>
+        <div class="export__file">
+            <label for="export-file" class="export__file-btn" title="Export File"></label>
+            <input type="checkbox" id="export-file">
+            <div class="export__file-options">
+                <label>Export As &nbsp; &#10140;</label>
+                <label for="export-file" id="toPDF">PDF <img src="static/image/pdf.png" alt=""></label>
+                <label for="export-file" id="toJSON">JSON <img src="static/image/json.png" alt=""></label>
+                <label for="export-file" id="toCSV">CSV <img src="static/image/csv.png" alt=""></label>
+                <label for="export-file" id="toEXCEL">EXCEL <img src="static/image/excel.png" alt=""></label>
+            </div>
+        </div>
+    </section>
+    <section class="table__body">
+        <table>
+            <thead>
+                <tr>
+                    <th> # <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Name <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Price <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Available Rooms <span class="icon-arrow">&UpArrow;</span></th>
+                    {% if admin %}
+                    <th> Action <span class="icon-arrow">&UpArrow;</span></th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in roomtypes %}
+                <tr>
+                    <td> {{r[0]}} </td>
+                    <td> {{r[1]}} </td>
+                    <td> <strong> $ {{r[2]}} </strong> </td>
+                    <td> {{r[6]}} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</main>
+
+</div>
+
+<script src="static/js/bookings.js"></script>
+{% endblock %}

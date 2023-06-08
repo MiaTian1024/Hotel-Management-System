@@ -188,4 +188,11 @@ def service():
     dbconn = getCursor()
     dbconn.execute(queries.service())
     service = dbconn.fetchall()
-    return render_template("service.html", title="Service", session=session, service=service)
+    return render_template("service.html", title="Services", session=session, service=service)
+
+@app.route("/roomtypes")
+def roomtypes():
+    dbconn = getCursor()
+    dbconn.execute(queries.roomTypes())
+    roomtypes = dbconn.fetchall()
+    return render_template("roomTypes.html", title="Room Types", session=session, roomtypes=roomtypes)

@@ -24,3 +24,7 @@ def roomInfo():
 def service():
     query=('select * from Service')
     return query
+
+def roomTypes():
+    query=('select * from RoomTypes join RoomInventory on RoomInventory.room_type_id = RoomTypes.type_id;')
+    return query
