@@ -196,3 +196,15 @@ def roomtypes():
     dbconn.execute(queries.roomTypes())
     roomtypes = dbconn.fetchall()
     return render_template("roomTypes.html", title="Room Types", session=session, roomtypes=roomtypes)
+
+@app.route("/newBooking" , methods=["GET", "POST"])
+def newBooking():
+    #if request.method == 'POST':
+       # fName=request.form.get('fName')
+       # lName=request.form.get('lName')
+       # roomType=request.form.get('roomType')
+      #  check_in_date=request.form.get('check_in_date')
+       # check_out_date=request.form.get('check_out_date')
+
+
+    return render_template("newBooking.html", title="Booking", session=session)
