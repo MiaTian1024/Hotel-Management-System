@@ -34,7 +34,8 @@ CREATE TABLE Room (
 CREATE TABLE Service (
   service_id INT PRIMARY KEY AUTO_INCREMENT,
   service_name VARCHAR(50),
-  price DECIMAL(10, 2)
+  price DECIMAL(10, 2),
+  status tinyint DEFAULT NULL
 );
 
 CREATE TABLE RoomInventory (

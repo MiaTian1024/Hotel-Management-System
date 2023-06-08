@@ -72,6 +72,7 @@ def login():
                 session['loggedin'] = True
                 session['id'] = user[0]
                 session['role_id'] = user[4]
+                session['name'] = user[1]
                 # Redirect to member page   
                 return redirect(url_for('dashboard'))
             else:
@@ -181,3 +182,10 @@ def dashboard():
 @app.route("/bookings")
 def bookings():
     return render_template("bookings.html", title="Dashboard", session=session)
+
+@app.route("/service")
+def service():
+    dbconn = getCursor()
+    dbconn.execute(queries.service())
+    service = dbconn.fetchall()
+    return render_template("service.html", title="Service", session=session, service=service)

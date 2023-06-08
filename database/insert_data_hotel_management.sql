@@ -24,9 +24,9 @@ INSERT INTO Room (room_id, type_id, status) VALUES
   (2, 2, 'Booked');
 
 -- Insert dummy data into the Service table
-INSERT INTO Service (service_id, service_name, price) VALUES
-  (1, 'Breakfast', 10.00),
-  (2, 'Extra Bed', 20.00);
+INSERT INTO Service (service_id, service_name, price, status) VALUES
+  (1, 'Breakfast', 10.00, 1),
+  (2, 'Extra Bed', 20.00, 1);
 
 -- Insert dummy data into the RoomInventory table
 INSERT INTO RoomInventory (inventory_id, room_type_id, available_rooms) VALUES

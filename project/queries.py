@@ -20,3 +20,7 @@ def customerInfo():
 def roomInfo():
     query=('select * from RoomTypes')
     return query
+
+def service():
+    query=('select * from Service')
+    return query
