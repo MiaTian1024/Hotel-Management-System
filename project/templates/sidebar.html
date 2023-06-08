@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div class="sidebar">
+    <div class="logo-details">
+            <img src="../static/image/logo-white.png" alt="img"></img>
+            <span class="logo_name">Vista Hotel</span>         
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="#" class="active">
+          <i class="bx bx-grid-alt"></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-box"></i>
+          <span class="links_name">Bookings</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-list-ul"></i>
+          <span class="links_name">Booked Rooms</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-pie-chart-alt-2"></i>
+          <span class="links_name">Menus</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-coin-stack"></i>
+          <span class="links_name">Calendar</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bx bx-message"></i>
+          <span class="links_name">Messages</span>
+        </a>
+      </li>
+      
+      <li class="log_out">
+        <a href="/logout">
+          <i class="bx bx-log-out"></i>
+          <span class="links_name">Log out</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <nav class="dashboard-nav">
+      <div class="sidebar-button">
+        <i class="bx bx-menu sidebarBtn"></i>
+        <span class="dashboard">{{title}}</span>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search..." />
+        <img src="static/image/search.png" alt="">
+      </div>
+      <div class="profile-details">
+        <img src="../static/image/profile.jpg" alt="" />
+        {% if customerInfo %}
+        <span class="admin_name">{{customerInfo[1]}}</span>
+        {% else %}
+        <span class="admin_name">{{session["name"]}}</span>
+        {% endif %}
+        <i class="bx bx-chevron-down"></i>
+      </div>
+    </nav>
+    <script src="static/js/dashboard.js"></script>
+{% endblock %}
+

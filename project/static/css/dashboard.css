@@ -24,10 +24,11 @@
   font-size: 22px;
   font-weight: 600;
   white-space: nowrap;
-  margin-top: 5px;
+  margin-top: 2px;
+  padding-left:5px;
 }
 .sidebar .nav-links{
-  margin-top: 10px;
+  margin-top: 30px;
 }
 .sidebar .nav-links li{
   position: relative;
@@ -51,13 +52,13 @@
 .sidebar .nav-links li i{
   min-width: 60px;
   text-align: center;
-  font-size: 24px;
+  font-size: 26px;
   color: #fff;
 }
 .sidebar .nav-links li a .links_name{
   color: #fff;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 17px;
+  font-weight: 500;
   white-space: nowrap;
 }
 .sidebar .nav-links .log_out{
@@ -80,8 +81,9 @@
 .home-section .dashboard-nav{
   display: flex;
   justify-content: space-between;
-  height: 80px;
-  background: #fff;
+  height: 70px;
+  background: var(--nav-color);
+  color:#fff;
   display: flex;
   align-items: center;
   position: fixed;
@@ -106,22 +108,35 @@
   font-size: 35px;
   margin-right: 10px;
 }
+
 .home-section .dashboard-nav .search-box{
-  position: relative;
-  height: 50px;
-  max-width: 550px;
-  width: 100%;
-  margin: 0 20px;
+    width: 35%;
+    height: 60%;
+    background-color: #fff5;
+    padding: 0 .8rem;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+}
+
+.home-section .dashboard-nav .search-box:hover {
+  width: 45%;
+  background-color: #fff8;
+  box-shadow: 0 .1rem .4rem #0002;
+}
+
+.home-section .dashboard-nav .search-box img {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 .dashboard-nav .search-box input{
-  height: 100%;
   width: 100%;
+  padding: 0 .5rem 0 .3rem;
+  background-color: transparent;
+  border: none;
   outline: none;
-  background: #F5F6FA;
-  border: 2px solid #EFEEF1;
-  border-radius: 6px;
-  font-size: 18px;
-  padding: 0 15px;
 }
 .dashboard-nav .search-box .bx-search{
   position: absolute;
@@ -144,13 +159,13 @@
   background: #F5F6FA;
   border: 2px solid #EFEEF1;
   border-radius: 6px;
-  height: 50px;
+  height: 40px;
   min-width: 190px;
   padding: 0 15px 0 2px;
 }
 .dashboard-nav .profile-details img{
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 6px;
   object-fit: cover;
 }

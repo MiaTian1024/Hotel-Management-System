@@ -174,3 +174,6 @@ def dashboard():
     elif session["name"]:
         return render_template("dashboard.html", title="Dashboard", session=session)
     
+@app.route("/bookings")
+def bookings():
+    return render_template("bookings.html", title="Dashboard", session=session)
