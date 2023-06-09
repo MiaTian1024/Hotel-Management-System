@@ -213,8 +213,11 @@ def newBooking():
        status="pending"
        user_id=session['id']
        dbconn=getCursor()
-       dbconn.execute(queries.addBooking(), (user_id, fullName, phone, roomType, check_in_date, check_out_date, breakfast, extraBed, status))
-       return redirect("/bookings")
+       dbconn.execute(queries.addBooking(), (user_id, fullName, phone, roomType, check_in_date, check_out_date, breakfast, extraBed, status))      
+       msg = 'You have successfully booked!'
+       dbconn.execute(queries.typeInfo(), (roomType, ))
+       roomInfo=dbconn.fetchone()    
+       return render_template("newBooking.html", msg=msg, title="Booking", roomInfo=roomInfo, session=session)
 
     roomtype=request.args.get('type')
     dbconn = getCursor()

@@ -3,6 +3,18 @@
 {% block content %}
 {% include "navbar.html" %} 
 
+{% if msg %}
+  <div class="overlay_popup">
+      <div class="popup">
+          <i class='bx bx-check-circle'></i>
+          <h2>Completed</h2>
+          <p>{{ msg }}</p>
+          <a href="/bookings?id={{session.id}}" class="pay-button">Pay</a>
+          <a href="/dashboard?id={{session.id}}" class="close-button">Back</a>
+      </div>
+  </div>
+  {% endif %}
+
 <div class="wrapper" style="padding: 80px 50px 50px 50px;">
 <section class = "banner">
     <h2>BOOK YOUR ROOM NOW</h2>
