@@ -18,11 +18,6 @@ INSERT INTO RoomTypes (type_id, type_name, price, info) VALUES
   (2, 'Deluxe Room', 150.00, 'Indulge in luxury and sophistication with Our Deluxe Rooms. '),
   (3, 'Suite', 250.00, 'Experience the pinnacle of luxury in our exquisite Suites.');
 
--- Insert dummy data into the Room table
-INSERT INTO Room (room_id, type_id, status) VALUES
-  (1, 1, 'Available'),
-  (2, 2, 'Booked');
-
 -- Insert dummy data into the Service table
 INSERT INTO Service (service_id, service_name, price, status) VALUES
   (1, 'Breakfast', 10.00, 1),
@@ -35,6 +30,6 @@ INSERT INTO RoomInventory (inventory_id, room_type_id, available_rooms) VALUES
   (3, 3, 2);
 
 -- Insert dummy data into the Bookings table
-INSERT INTO Bookings (booking_id, user_id, room_id, check_in_date, check_out_date, service_id, service_amount) VALUES
-  (1, 1, 2, '2023-06-10', '2023-06-12', 1, 10.00),
-  (2, 2, 1, '2023-06-15', '2023-06-20', 2, 20.00);
+INSERT INTO Bookings (booking_id, user_id, user_full_name, user_phone, room_type_id, check_in_date, check_out_date, breakfast_amount, extra_bed_amount, status) VALUES
+  (1, 1, 'John Doe', '12333333', 2, '2023-06-10', '2023-06-12', 1, 0, "pending"),
+  (2, 2, 'Jane Alex', '21112333', 1, '2023-06-15', '2023-06-20', 0, 1, "pending");

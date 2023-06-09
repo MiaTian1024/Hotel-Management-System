@@ -181,7 +181,10 @@ def dashboard():
     
 @app.route("/bookings")
 def bookings():
-    return render_template("bookings.html", title="Dashboard", session=session)
+    dbconn = getCursor()
+    dbconn.execute(queries.bookingInfo(), (session['id'],))
+    bookingInfo=dbconn.fetchall()
+    return render_template("bookings.html", title="Booking", bookingInfo=bookingInfo, session=session)
 
 @app.route("/service")
 def service():
@@ -199,12 +202,22 @@ def roomtypes():
 
 @app.route("/newBooking" , methods=["GET", "POST"])
 def newBooking():
-    #if request.method == 'POST':
-       # fName=request.form.get('fName')
-       # lName=request.form.get('lName')
-       # roomType=request.form.get('roomType')
-      #  check_in_date=request.form.get('check_in_date')
-       # check_out_date=request.form.get('check_out_date')
+    if request.method == 'POST':
+       roomType=request.form.get('roomType')
+       fullName=request.form.get('fullName')
+       phone=request.form.get('phone')
+       breakfast=request.form.get('breakfast')
+       extraBed=request.form.get('extraBed')
+       check_in_date=request.form.get('check_in_date')
+       check_out_date=request.form.get('check_out_date')
+       status="pending"
+       user_id=session['id']
+       dbconn=getCursor()
+       dbconn.execute(queries.addBooking(), (user_id, fullName, phone, roomType, check_in_date, check_out_date, breakfast, extraBed, status))
+       return redirect("/bookings")
 
-
-    return render_template("newBooking.html", title="Booking", session=session)
+    roomtype=request.args.get('type')
+    dbconn = getCursor()
+    dbconn.execute(queries.typeInfo(), (roomtype, ))
+    roomInfo=dbconn.fetchone()
+    return render_template("newBooking.html", title="Booking", roomInfo=roomInfo, session=session)

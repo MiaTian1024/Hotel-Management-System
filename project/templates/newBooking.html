@@ -8,40 +8,49 @@
     <h2>BOOK YOUR ROOM NOW</h2>
     <div class = "card-container">
         <div class = "card-img">
-            <!-- image here -->
+            {% if roomInfo[0] == 1%}
+            <img src="../static/image/standard.jpg" alt="img">
+            {% elif roomInfo[0] == 2%}
+            <img src="../static/image/deluxe.jpg" alt="img">
+            {% elif roomInfo[0] == 3%}
+            <img src="../static/image/suite.jpg" alt="img">
+            {% else %}
+            <img src="../static/image/standard.jpg" alt="img">
+            {% endif %}
         </div>
 
         <div class = "card-content">
             <h3>Reservation</h3>
-            <form class="booking-form">
+            <form class="booking-form"  method="POST" action="/newBooking">
                 <div class = "form-row">
-                    <input type = "text" placeholder="Standard Room" value="Standard Room" disabled>
-                    <input type = "text" placeholder="$ 100 / Night" value="$ 100 /Night" disabled>
+                    <input type="hidden" name="roomType" value="{{roomInfo[0]}}" />
+                    <input type = "text" placeholder="{{roomInfo[1]}}" disabled>
+                    <input type = "text" placeholder="$ {{roomInfo[2]}} /Night" disabled >
                 </div>
 
                 <div class = "form-row">
-                    <input type = "text" placeholder="Full Name">
-                    <input type = "text" placeholder="Phone Number">
+                    <input type = "text"  name="fullName" placeholder="Full Name">
+                    <input type = "text" name="phone" placeholder="Phone Number">
                 </div>
 
                 <div class = "form-row">
-                <select name = "days">
-                    <option value = "day-select">Breakfast</option>
-                    <option value = "sunday">0</option>
-                    <option value = "monday">1</option>
-                    <option value = "tuesday">2</option>
+                <select name = "breakfast">
+                    <option disabled selected>Breakfast</option>
+                    <option value ="0">0</option>
+                    <option value ="1">1</option>
+                    <option value ="2">2</option>
                 </select>
   
-                <select name = "hours">
-                    <option value = "hour-select">Etra Bed</option>
-                    <option value = "10">0</option>
-                    <option value = "10">1</option>                  
+                <select name = "extraBed">
+                    <option disabled selected>Etra Bed</option>
+                    <option value = "0">0</option>
+                    <option value = "1">1</option>                  
                 </select>
                 </div>
 
                 <div class = "form-row">                          
                     <input type="text" name = "check_in_date" onfocus="(this.type='date')" placeholder="check_in_date">              
-                    <input type="text" name = "check_in_date" onfocus="(this.type='date')" placeholder="check_in_date">                 
+                    <input type="text" name = "check_out_date" onfocus="(this.type='date')" placeholder="check_out_date">                 
                 </div>
             
 

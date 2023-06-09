@@ -24,13 +24,6 @@ CREATE TABLE RoomTypes (
   info VARCHAR(255)
 );
 
-CREATE TABLE Room (
-  room_id INT PRIMARY KEY AUTO_INCREMENT,
-  type_id INT,
-  status VARCHAR(50),
-  FOREIGN KEY (type_id) REFERENCES RoomTypes(type_id)
-);
-
 CREATE TABLE Service (
   service_id INT PRIMARY KEY AUTO_INCREMENT,
   service_name VARCHAR(50),
@@ -48,12 +41,14 @@ CREATE TABLE RoomInventory (
 CREATE TABLE Bookings (
   booking_id INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT,
-  room_id INT,
+  user_full_name VARCHAR(50),
+  user_phone VARCHAR(20),
+  room_type_id INT,
   check_in_date DATE,
   check_out_date DATE,
-  service_id INT,
-  service_amount DECIMAL(10, 2),
+  breakfast_amount INT DEFAULT NULL,
+  extra_bed_amount INT DEFAULT NULL,
+  status VARCHAR(50),
   FOREIGN KEY (user_id) REFERENCES Users(user_id),
-  FOREIGN KEY (room_id) REFERENCES Room(room_id),
-  FOREIGN KEY (service_id) REFERENCES Service(service_id)
+  FOREIGN KEY (room_type_id) REFERENCES RoomTypes(type_id)
 );
