@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block header %}
+
+  <section class="home-section" style="width: 100%; left: 0;">
+    <nav class="dashboard-nav" style="width:100%; left:0;">
+      <div class="sidebar-button">
+        <img src="../static/image/logo-white.png" alt="img"></img>
+        <span class="dashboard">Vista Hotel</span>
+      </div>
+
+      <div class="search-box">
+        <input type="text" placeholder="Search..." />
+        <img src="static/image/search.png" alt="">
+      </div>
+
+      <div class="navbar_right">
+        <div class="notifications"  onclick="notificationToggle();">
+            <div class="icon_wrap"><i class='bx bx-bell'></i></div>
+            
+            <div class="notification_dd">
+                <ul class="notification_ul">
+                    <li class="success">
+                        <div class="notify_data">
+                            <div class="title">
+                                Lorem, ipsum dolor.  
+                            </div>
+                        </div>
+                        <div class="notify_status">
+                            <p>Success</p>  
+                        </div>
+                    </li>  
+
+                    <li class="failed">
+                        <div class="notify_data">
+                            <div class="title">
+                                Lorem, ipsum dolor.  
+                            </div>
+                        </div>
+                        <div class="notify_status">
+                            <p>Failed</p>  
+                        </div>
+                    </li> 
+
+                    <li class="pending">
+                        <div class="notify_data">
+                            <div class="title">
+                                Lorem, ipsum dolor.  
+                            </div>
+                        </div>
+                        <div class="notify_status">
+                            <p>Pending</p>  
+                        </div>
+                    </li> 
+                </ul>
+            </div>        
+        </div>
+        <div class='profile' onclick="profileToggle();">
+            <div class="icon_wrap">
+                <img src="../static/image/profile.jpg" alt="" /> 
+                <span class="name">{{session["name"]}}</span>   
+                <i class="bx bx-chevron-down"></i>
+            </div>
+            <div class="profile_dd">
+                <h3>
+                User Account
+                <div>
+                    Operational Team
+                </div>
+            </h3>
+                <ul class="profile_ul">
+                <li><a href="#"><i class="fas fa-user-alt"></i></span>Profile</a></li>
+                <li><a class="address" href="#"><span class="picon"><i class="fas fa-map-marker"></i></span>Address</a></li>
+                <li><a class="settings" href="#"><span class="picon"><i class="fas fa-cog"></i></span>Settings</a></li>
+                <li><a class="logout" href="#"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+                </ul>
+            </div>
+        </div>
+      </div>
+    </nav>
+
+   
+    <script src="static/js/dashboard.js"></script>
+{% endblock %}
+

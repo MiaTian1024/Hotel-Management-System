@@ -79,7 +79,6 @@
   left: 60px;
 }
 .home-section .dashboard-nav{
-  display: flex;
   justify-content: space-between;
   height: 70px;
   background: var(--nav-color);
@@ -104,9 +103,10 @@
   font-size: 24px;
   font-weight: 500;
 }
-.dashboard-nav .sidebar-button i{
-  font-size: 35px;
-  margin-right: 10px;
+.dashboard-nav .sidebar-button img{
+  width: 40px;
+  height: 40px;
+  margin:10px 10px;
 }
 
 .home-section .dashboard-nav .search-box{
@@ -153,33 +153,194 @@
   font-size: 22px;
   transition: all 0.4 ease;
 }
-.home-section .dashboard-nav .profile-details{
+
+.dashboard-nav .navbar_right{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar_right img{
+  height: 35px;
+  border-radius: 25px;
+} 
+
+.navbar_right .icon_wrap{
+  cursor:pointer;
+}
+
+.navbar_right .notifications{
+  margin-right: 25px;
+}
+
+.navbar_right .notifications .icon_wrap{
+  font-size: 28px;
+}
+
+.navbar_right .profile,
+.navbar_right .notifications{
+  position: relative;
+  display:flex;
+  align-items: center;
+}
+
+.profile_dd{
+  background-color:#FFF;
+  box-sizing:0 5px 25px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  padding: 10px 20px;
+  position: absolute;
+  right: -10px;
+  width: 180px;
+  transition: 0.5s;
+  top: 80px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.notification_dd{
+  position: absolute;
+  top: 48px;
+  right: -15px;
+  user-select: none;
+  background: #fff;
+  border: 1px solid #c7d8e2;
+  width: 350px;
+  height: auto;
+  border-radius: 3px;
+  box-shadow: 10px 10px 35px rgba(0,0,0,0.125),
+              -10px -10px 35px rgba(0,0,0,0.125);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.profile_dd.active,
+.notification_dd.active{
+  opacity: 1;
+  top: 80px;
+  visibility: visible;
+}
+
+
+.profile_dd::before,
+.notification_dd::before{
+    background-color:#fff;
+    content: '';
+    height: 20px;
+    position: absolute;
+    right: 30px;
+    transform:rotate(45deg);
+    top:-5px;
+    width: 20px;
+
+}
+
+.profile_dd h3{
+    color: #555;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3em;
+    padding: 20px 0px;
+    text-align: left;
+    width: 100%;
+}
+
+.profile_dd h3 div{
+  color: #818181;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.notification_dd li {
+  border-bottom: 1px solid #f1f2f4;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
-  background: #F5F6FA;
-  border: 2px solid #EFEEF1;
-  border-radius: 6px;
-  height: 40px;
-  min-width: 190px;
-  padding: 0 15px 0 2px;
 }
-.dashboard-nav .profile-details img{
-  height: 35px;
-  width: 35px;
-  border-radius: 6px;
-  object-fit: cover;
+
+
+.notification_dd li .notify_data{
+margin: 0 15px;
+width: 185px;
 }
-.dashboard-nav .profile-details .admin_name{
-  font-size: 15px;
-  font-weight: 500;
-  color: #333;
+
+.notification_dd li .notify_data .title{
+color: #000;
+font-weight: 600;
+}
+
+
+.notification_dd li .notify_status p{
+font-size: 12px;
+}
+
+.notification_dd li.success .notify_status p{
+color: #47da89;
+}
+
+.notification_dd li.failed .notify_status p{
+color: #fb0001;
+}
+
+.notification_dd li.pending .notify_status p{
+  color: #fbcd00;
+  }
+
+.navbar_right .profile .icon_wrap{
+  display: flex;
+  align-items: center;
+}
+
+.navbar_right .profile .name{
+  display: inline-block;
   margin: 0 10px;
-  white-space: nowrap;
 }
-.dashboard-nav .profile-details i{
-  font-size: 25px;
-  color: #333;
+
+.navbar_right .icon_wrap:hover,
+.navbar_right .profile.active .icon_wrap,
+.navbar_right .notifications.active .icon_wrap{
+  color: #3b80f9;
 }
+
+.profile .profile_dd ul li {
+    align-items: center;
+    border-top:1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: left;
+    list-style: none;
+    padding: 10px 0px;
+}
+
+
+
+.profile .profile_dd ul li  a{
+    display: inline-block;
+    color: #555;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.profile .profile_dd ul li i{
+  max-width: 20px;
+  margin-right: 10px;
+  opacity: 0.5;
+  transition:0.5s
+}
+
+
+.profile .profile_dd ul li  a:hover{
+  color: #7f8db0;
+}
+
+.profile .profile_dd ul li i:hover{
+  opacity: 1;
+}
+
+
 .home-section .home-content{
   position: relative;
   padding-top: 104px;
