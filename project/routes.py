@@ -224,3 +224,10 @@ def newBooking():
     dbconn.execute(queries.typeInfo(), (roomtype, ))
     roomInfo=dbconn.fetchone()
     return render_template("newBooking.html", title="Booking", roomInfo=roomInfo, session=session)
+
+@app.route("/bill")
+def bill():
+    dbconn = getCursor()
+    dbconn.execute(queries.service())
+    service = dbconn.fetchall()
+    return render_template("bill.html", title="Bills", session=session, service=service)

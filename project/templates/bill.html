@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include "navbar.html" %} 
+
+<div class="wrapper" style="min-height:100vh;">
+
+<main class="table">
+    <section class="table__header" style="height:60px;">
+        <h1>Your Bill</h1>
+      
+    </section>
+    <section class="table__body">
+       <div class='bill-container'>
+          <div class="bill-row">
+            <span>Full Name:</span>
+            <span>Mia Tian</span>
+          </div>
+          <div class="bill-row">
+            <span>Email:</span>
+            <span>Mia Tian</span>
+          </div>
+          <div>
+            <table>
+                <tr>
+                    <th>Menu<th>
+                    <th>Price<th>
+                    <th>Quantity<th>
+                    <th>Amount<th>
+                </tr>
+                <tr>
+                    <td>Room<td>
+                    <td>$100<td>
+                    <td>1<td>
+                    <td>$100<td>
+                </tr>
+            </table>
+          </div>
+          <div class="amount-row">
+            <h2>Total Amount: </h2>
+          </div>
+       </div>
+    </section>
+    <div class="bill-button">
+    <a href="/newBooking?">Continue To Payment</a>
+    </div>
+</main>
+
+</div>
+
+<script src="static/js/bookings.js"></script>
+{% endblock %}
