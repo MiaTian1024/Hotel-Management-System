@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% include "sidebar.html" %} 
+{% include "navbar.html" %} 
 
 <div class="wrapper" style="padding: 80px 50px 50px 50px;">
 <section class = "banner">
@@ -13,10 +13,10 @@
 
         <div class = "card-content">
             <h3>Reservation</h3>
-            <form>
+            <form class="booking-form">
                 <div class = "form-row">
-                    <input type = "text" placeholder="Standard Room">
-                    <input type = "text" placeholder="$ 100 / Night">
+                    <input type = "text" placeholder="Standard Room" value="Standard Room" disabled>
+                    <input type = "text" placeholder="$ 100 / Night" value="$ 100 /Night" disabled>
                 </div>
 
                 <div class = "form-row">
@@ -39,21 +39,15 @@
                 </select>
                 </div>
 
-                <div class = "form-row">
-                    <div class="form-time">
-                        <label for="check_in_date">check_in_date</label>
-                        <input type="date" name = "check_in_date">
-                    </div>
-                    <div class="form-time">
-                        <label for="check_in_date">check_in_date</label>
-                        <input type="date" name = "check_in_date">
-                    </div>
+                <div class = "form-row">                          
+                    <input type="text" name = "check_in_date" onfocus="(this.type='date')" placeholder="check_in_date">              
+                    <input type="text" name = "check_in_date" onfocus="(this.type='date')" placeholder="check_in_date">                 
                 </div>
             
 
                 <div class = "form-row">
-                    <input type = "submit" value="Cancle">
-                    <input type = "submit" value = "BOOK TABLE">
+                    <button type = "submit" class="submit-button">Submit</button>
+                    <button class = "cancle-button" onclick="history.back()">Cancle</button>
                 </div>
             </form>
         </div>

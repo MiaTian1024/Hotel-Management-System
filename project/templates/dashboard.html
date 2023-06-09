@@ -10,9 +10,9 @@
           <div class="box">
            
               <div class="input-field">
-                <label class="box-topic">Room Type</label>
+               
                 <select required>
-                    <option disabled selected>Select Room Type</option>
+                    <option disabled selected>Room Type</option>
                     <option>Male</option>
                     <option>Female</option>
                     <option>Others</option>
@@ -21,26 +21,23 @@
             </div>
 
             <div class="box">
-              <div class="input-field">
-                <label class="box-topic">Check in date Date</label>
-                <input type="date" placeholder="Enter your issued date" required>
+              <div class="input-field">    
+                <input type="text" name = "check_in_date" onfocus="(this.type='date')" placeholder="check_in_date">
               </div>
             </div>
 
             <div class="box">
-              <div class="input-field">
-                <label class="box-topic">check out date</label>
-                <input type="date" placeholder="Enter expiry date" required>
+              <div class="input-field">    
+                <input type="text" name = "check_in_date" onfocus="(this.type='date')" placeholder="check_out_date">
               </div>
 
             </div>
 
             <div class="box">
-              <button class="nextBtn">
-                <span class="btnText">Search</span>
-                <i class="uil uil-navigator"></i>
-              </button>
+              <div class="input-field">
+              <button type = "submit" class="submit-button">Search</button>
             </div>
+          </div>
       </div>
     </form> 
     </div>

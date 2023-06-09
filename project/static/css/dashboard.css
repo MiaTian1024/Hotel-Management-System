@@ -109,6 +109,11 @@
   margin:10px 10px;
 }
 
+.dashboard-nav .sidebar-button img:hover{
+  width:45px;
+  height:45px;
+}
+
 .home-section .dashboard-nav .search-box{
     width: 35%;
     height: 60%;
@@ -379,6 +384,29 @@ color: #fb0001;
   align-items: left;
   justify-content: center;
 }
+.box .input-field input, .input-field select, .input-field button{
+  display: block;
+  width: 100%;
+  margin: 15px 12px;
+  padding: 5px;
+  font-size: 15px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #eee;
+  font-weight: 300;
+}
+
+.box .input-field button{
+  color: #fff;
+  background: #ec7864;
+  padding: 6px 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.box .input-field button:hover{
+  opacity: 0.9;
+}
+
 .overview-boxes .box-topic{
   font-size: 20px;
   font-weight: 500;
