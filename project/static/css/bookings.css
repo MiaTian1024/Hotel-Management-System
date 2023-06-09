@@ -213,6 +213,11 @@ tbody tr.hide td img {
     cursor: pointer;
     border-radius: 6px;
     font-size: 16px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.bill-button :hover{
+    opacity: 0.8;
 }
 
 .bill-button a{

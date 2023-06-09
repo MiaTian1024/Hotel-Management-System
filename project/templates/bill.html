@@ -42,7 +42,10 @@
        </div>
     </section>
     <div class="bill-button">
-    <a href="/newBooking?">Continue To Payment</a>
+     <form method="POST" action="/newBooking">
+        <input type="hidden" name="bookingId" value="" />   
+        <a type="submit" href="/newBooking?">Continue To Payment</a>
+     </form>
     </div>
 </main>
 

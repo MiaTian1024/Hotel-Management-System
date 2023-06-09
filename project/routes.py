@@ -225,9 +225,10 @@ def newBooking():
     roomInfo=dbconn.fetchone()
     return render_template("newBooking.html", title="Booking", roomInfo=roomInfo, session=session)
 
-@app.route("/bill")
-def bill():
+@app.route("/invoice")
+def invoice():
     dbconn = getCursor()
     dbconn.execute(queries.service())
     service = dbconn.fetchall()
-    return render_template("bill.html", title="Bills", session=session, service=service)
+    return render_template("invoice.html", title="Invoice", session=session, service=service)
+
