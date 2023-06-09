@@ -185,7 +185,7 @@
 }
 
 .profile_dd{
-  background-color:#FFF;
+  background-color: var(--dropdown-color);
   box-sizing:0 5px 25px rgba(0,0,0,0.1);
   border-radius: 15px;
   padding: 10px 20px;
@@ -203,11 +203,11 @@
   top: 48px;
   right: -15px;
   user-select: none;
-  background: #fff;
-  border: 1px solid #c7d8e2;
+  background: var(--dropdown-color);
   width: 350px;
   height: auto;
-  border-radius: 3px;
+  transition: 0.5s;
+  border-radius: 15px;
   box-shadow: 10px 10px 35px rgba(0,0,0,0.125),
               -10px -10px 35px rgba(0,0,0,0.125);
   visibility: hidden;
@@ -224,7 +224,7 @@
 
 .profile_dd::before,
 .notification_dd::before{
-    background-color:#fff;
+    background-color: var(--dropdown-color);
     content: '';
     height: 20px;
     position: absolute;
@@ -252,7 +252,7 @@
 }
 
 .notification_dd li {
-  border-bottom: 1px solid #f1f2f4;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
   padding: 10px 20px;
   display: flex;
   align-items: center;
@@ -324,9 +324,10 @@ color: #fb0001;
     transition: 0.5s;
 }
 
-.profile .profile_dd ul li i{
-  max-width: 20px;
-  margin-right: 10px;
+.profile .profile_dd ul li a i{
+  max-width: 30px;
+  font-size: 15px;
+  margin-right: 20px;
   opacity: 0.5;
   transition:0.5s
 }
@@ -336,32 +337,47 @@ color: #fb0001;
   color: #7f8db0;
 }
 
-.profile .profile_dd ul li i:hover{
+.profile .profile_dd ul li a i:hover{
   opacity: 1;
 }
 
 
 .home-section .home-content{
   position: relative;
-  padding-top: 104px;
+  padding-top: 120px;
+}
+
+.home-section .search-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
 }
 .home-content .overview-boxes{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  padding: 0 20px;
-  margin-bottom: 10px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
+
+
 .overview-boxes .box{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100% / 4 - 15px);
-  background: #fff;
-  padding: 15px 14px;
-  border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  margin:0 20px;
+  padding: 10px;
+  
+}
+.box .input-field{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
 }
 .overview-boxes .box-topic{
   font-size: 20px;
@@ -372,6 +388,17 @@ color: #fb0001;
   font-size: 35px;
   margin-top: -6px;
   font-weight: 500;
+}
+
+.box .nextBtn{
+  color: #fff;
+  background: #0A2558;
+  padding: 4px 12px;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 .home-content .box .indicator{
   display: flex;
