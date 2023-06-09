@@ -216,14 +216,44 @@ def newBooking():
        dbconn.execute(queries.addBooking(), (user_id, fullName, phone, roomType, check_in_date, check_out_date, breakfast, extraBed, status))      
        msg = 'You have successfully booked!'
        dbconn.execute(queries.typeInfo(), (roomType, ))
-       roomInfo=dbconn.fetchone()    
-       return render_template("newBooking.html", msg=msg, title="Booking", roomInfo=roomInfo, session=session)
+       roomInfo=dbconn.fetchone()  
+       dbconn.execute(queries.bookingBill(), (user_id, ))
+       billInfo=dbconn.fetchone()  
+       print(billInfo)
+       
+       return render_template("newBooking.html", msg=msg, title="Booking", billInfo=billInfo, roomInfo=roomInfo, session=session)
 
     roomtype=request.args.get('type')
     dbconn = getCursor()
     dbconn.execute(queries.typeInfo(), (roomtype, ))
     roomInfo=dbconn.fetchone()
     return render_template("newBooking.html", title="Booking", roomInfo=roomInfo, session=session)
+
+@app.route("/bill")
+def bill():
+    billId = request.args.get('billId')
+    dbconn = getCursor()
+    dbconn.execute(queries.billInfo(), (billId, ))
+    billInfo = dbconn.fetchone()
+    roomPrice=billInfo[5] * billInfo[10]
+    dbconn.execute(queries.service())
+    service = dbconn.fetchall()
+    breakfastPrice=service[0][2] * billInfo[6]
+    extraBedPrice=service[1][2] * billInfo[7]
+    totalAmount=roomPrice + breakfastPrice + extraBedPrice
+    print(service)
+    print(roomPrice)
+    print(breakfastPrice)
+    print(extraBedPrice)
+    return render_template("bill.html", 
+                           title="Bill", 
+                           billInfo=billInfo, 
+                           service=service, 
+                           breakfastPrice=breakfastPrice,  
+                           extraBedPrice=extraBedPrice,
+                           roomPrice=roomPrice,
+                           totalAmount=totalAmount,
+                           session=session)
 
 @app.route("/invoice")
 def invoice():

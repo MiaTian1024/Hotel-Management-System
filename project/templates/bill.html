@@ -14,11 +14,11 @@
        <div class='bill-container'>
           <div class="bill-row">
             <span>Full Name:</span>
-            <span>Mia Tian</span>
+            <span>{{billInfo[2]}}</span>
           </div>
           <div class="bill-row">
-            <span>Email:</span>
-            <span>Mia Tian</span>
+            <span>Phone:</span>
+            <span>{{billInfo[3]}}</span>
           </div>
           <div>
             <table>
@@ -29,15 +29,27 @@
                     <th>Amount<th>
                 </tr>
                 <tr>
-                    <td>Room<td>
-                    <td>$100<td>
-                    <td>1<td>
-                    <td>$100<td>
+                    <td>{{billInfo[9]}}<td>
+                    <td>$ {{billInfo[10]}}<td>
+                    <td>{{billInfo[5]}}<td>
+                    <td>$ {{roomPrice}}<td>
                 </tr>
+                <tr>
+                  <td>{{service[0][1]}}<td>
+                  <td>$ {{service[0][2]}}<td>
+                  <td>{{billInfo[6]}}<td>
+                  <td>$ {{breakfastPrice}}<td>
+              </tr>
+              <tr>
+                <td>{{service[1][1]}}<td>
+                <td>$ {{service[1][2]}}<td>
+                <td>{{billInfo[7]}}<td>
+                <td>$ {{extraBedPrice}}<td>
+            </tr>
             </table>
           </div>
           <div class="amount-row">
-            <h2>Total Amount: </h2>
+            <h2>Total Amount: $ {{totalAmount}} </h2>
           </div>
        </div>
     </section>

@@ -43,3 +43,15 @@ def addBooking():
 def bookingInfo():
     query=('select * from Bookings where user_id=%s;')
     return query
+
+def bookingBill():
+    query=('select * from Bookings where user_id=%s order by booking_id desc;')
+    return query
+
+def billInfo():
+    query=('''
+          select booking_id, user_id, user_full_name, user_phone, room_type_id, datediff(check_out_date, check_in_date) as duration, breakfast_amount, extra_bed_amount, status, RoomTypes.type_name, RoomTypes.price
+          from Bookings
+          join RoomTypes on Bookings.room_type_id = RoomTypes.type_id where booking_id=%s;
+    ''')
+    return query
