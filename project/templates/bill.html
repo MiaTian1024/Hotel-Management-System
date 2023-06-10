@@ -53,12 +53,20 @@
           </div>
        </div>
     </section>
+    {% if billInfo[8] == "Pending" %}
     <div class="bill-button">
      <form method="POST" action="/bookings">
         <input type="hidden" name="bookingId" value="{{billInfo[0]}}" />   
         <button type="submit">Continue To Payment</button>
+        <a href="/bookings">Back</a>
      </form>
+     
     </div>
+    {%else%}
+    <div class="bill-button">
+       <a href="/bookings">Back</a>
+    </div>
+    {%endif%}
 </main>
 
 </div>

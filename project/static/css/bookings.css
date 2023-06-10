@@ -164,22 +164,62 @@ tbody tr.hide td img {
     text-align: center;
 }
 
-.status.delivered {
+.status-confirmed {
     background-color: #86e49d;
     color: #006b21;
+    text-align: center; 
+    padding:8px;
+    border-radius: 5px;    
 }
 
-.status.cancelled {
+.status-cancelled {
     background-color: #d893a3;
     color: #b30021;
+    text-align: center;
+    padding:8px;
+    border-radius: 5px; 
 }
 
-.status.pending {
+.status-pending{
     background-color: #ebc474;
+    color:#634304;
+    text-align: center;
+    padding:8px;
+    border-radius: 5px; 
 }
 
-.status.shipped {
-    background-color: #6fcaea;
+.view-choice{
+    background-color:#82837a;
+    padding:0 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #daded5;
+    box-shadow: 0 .1rem .4rem #0002;
+    margin:2px;
+}
+
+.pay-choice{
+    background-color:#397d96;
+    padding:0 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #b6d7e3;
+    box-shadow: 0 .1rem .4rem #0002;
+    margin:2px;
+}
+
+.cancel-choice{
+    background-color: #c56166;
+    padding:0 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    color:#eacfd0;
+    box-shadow: 0 .1rem .4rem #0002;
+    margin:2px;
+}
+
+.pay-choice:hover, .view-choice:hover, .cancel-choice:hover{
+    opacity:0.9
 }
 
 .bill-container{
@@ -197,7 +237,7 @@ tbody tr.hide td img {
 .bill-container .amount-row{
     display:flex;
     justify-content: end;
-    padding:15px;
+    padding:24px;
 }
 .bill-container .bill-row span{
     margin-right: 20px;
@@ -205,11 +245,8 @@ tbody tr.hide td img {
 
 .bill-button{
     position: absolute;
-    right:25px;
-    background-color: #397d96;
+    right:26px;
     color: #fff;
-    border: none;
-    padding: 5px 18px;
     cursor: pointer;
     border-radius: 6px;
     font-size: 16px;
@@ -220,10 +257,14 @@ tbody tr.hide td img {
     opacity: 0.8;
 }
 
-.bill-button a{
-    text-decoration: none;
+.bill-button button{
     color:#fff;
+    background-color: #397d96;
+    padding: 5px 18px;
+    border-radius: 6px;
+    cursor: pointer;
 }
+
 @media (max-width: 1000px) {
     td:not(:first-of-type) {
         min-width: 12.1rem;

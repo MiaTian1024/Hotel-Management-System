@@ -102,7 +102,7 @@
     position: relative;
     font-size: 24px;
     font-weight: 500;
-    color: #333;
+    color: #333;    
   }
   .login-forms .login-form-content .title:before{
     content: '';
@@ -224,6 +224,7 @@
         border-radius: 6px;
         background: var(--nav-color);
         color:#FFF;
+        cursor: pointer;
     }
     
     .media-options {

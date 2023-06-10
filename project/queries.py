@@ -59,3 +59,8 @@ def billInfo():
 def billConfirm():
     query=('update Bookings set status = "Confirmed" where booking_id=%s;')
     return query
+
+
+def billCancel():
+    query=('update Bookings set status = "Cancelled" where booking_id=%s;')
+    return query

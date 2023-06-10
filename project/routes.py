@@ -204,7 +204,7 @@ def newBooking():
        extraBed=request.form.get('extraBed')
        check_in_date=request.form.get('check_in_date')
        check_out_date=request.form.get('check_out_date')
-       status="pending"
+       status="Pending"
        user_id=session['id']
        dbconn=getCursor()
        dbconn.execute(queries.addBooking(), (user_id, fullName, phone, roomType, check_in_date, check_out_date, breakfast, extraBed, status))      
@@ -266,10 +266,22 @@ def bookings():
     return render_template("bookings.html", title="Booking", bookingInfo=bookingInfo, session=session)
    
 
-@app.route("/invoice")
-def invoice():
+@app.route("/confirmCancel")
+def confirmCancel():
     dbconn = getCursor()
-    dbconn.execute(queries.service())
-    service = dbconn.fetchall()
-    return render_template("invoice.html", title="Invoice", session=session, service=service)
+    billId = request.args.get('billId')
+    if billId:
+        confirmMsg="Are you sure you want to cancel this bill?"    
+        dbconn.execute(queries.bookingInfo(), (session['id'],))
+        bookingInfo=dbconn.fetchall()
+        return render_template("bookings.html", title="Booking", billId=billId, confirmMsg=confirmMsg, bookingInfo=bookingInfo, session=session)
+
+@app.route("/cancelBill")
+def cancelBill():
+        billId = request.args.get('billId')
+        dbconn.execute(queries.billCancel(), (billId, ))
+        cancelMsg="You have successfully canceled this bill."
+        dbconn.execute(queries.bookingInfo(), (session['id'],))
+        bookingInfo=dbconn.fetchall()
+        return render_template("bookings.html", title="Booking", cancelMsg=cancelMsg, session=session, bookingInfo=bookingInfo)
 

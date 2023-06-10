@@ -12,6 +12,22 @@
           <button onclick="closePopup()">Close</button>
       </div>
   </div>
+{% elif confirmMsg %}
+<div class="overlay_popup">
+    <div class="popup">
+        <p>{{ confirmMsg }}</p>
+        <a href="/cancelBill?billId={{billId}}" class="pay-button">Yes</a>
+        <a href="/bookings" class="close-button">Back</a>
+    </div>
+</div>
+
+{% elif cancelMsg %}
+<div class="overlay_popup">
+    <div class="popup">
+        <p>{{ cancelMsg }}</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+</div>
 {% endif %}
 
 <div class="wrapper">
@@ -23,15 +39,7 @@
             <img src="static/image/search.png" alt="">
         </div>
         <div class="export__file">
-            <label for="export-file" class="export__file-btn" title="Export File"></label>
-            <input type="checkbox" id="export-file">
-            <div class="export__file-options">
-                <label>Export As &nbsp; &#10140;</label>
-                <label for="export-file" id="toPDF">PDF <img src="static/image/pdf.png" alt=""></label>
-                <label for="export-file" id="toJSON">JSON <img src="static/image/json.png" alt=""></label>
-                <label for="export-file" id="toCSV">CSV <img src="static/image/csv.png" alt=""></label>
-                <label for="export-file" id="toEXCEL">EXCEL <img src="static/image/excel.png" alt=""></label>
-            </div>
+            
         </div>
     </section>
     <section class="table__body">
@@ -53,9 +61,31 @@
                     <td> {{booking[2]}} </td>
                     <td> {{booking[11]}} </td>
                     <td> {{booking[5]}} </td>
-                    <td> {{booking[6]}} </td>
-                    <td> {{booking[9]}} </td>
-                    <td> Cancle </td>
+                    <td> {{booking[6]}} </td>    
+                    {% if booking[9] == "Confirmed" %}
+                    <td > 
+                      <p class="status-confirmed"> {{booking[9]}}</p>  
+                    </td> 
+                    <td>
+                        <a href="/bill?billId={{booking[0]}}" class="view-choice">View</a>
+                    </td>
+                    {% elif booking[9] == "Pending" %} 
+                    <td > 
+                        <p class="status-pending"> {{booking[9]}}</p>  
+                    </td>
+                    <td>
+                        <a href="/bill?billId={{booking[0]}}" class="view-choice">View</a>
+                        <a href="/bill?billId={{booking[0]}}" class="pay-choice">Pay</a>
+                        <a href="/confirmCancel?billId={{booking[0]}}" class="cancel-choice">Cancel</a>
+                    </td>
+                    {% elif booking[9] == "Cancelled" %} 
+                    <td > 
+                        <p class="status-cancelled"> {{booking[9]}}</p>  
+                      </td> 
+                      <td>
+                        <a href="/bill?billId={{booking[0]}}" class="view-choice">View</a>
+                    </td>
+                    {% endif %}            
                 </tr>
                 {% endfor %}
             </tbody>
