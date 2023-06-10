@@ -144,10 +144,15 @@ def callback():
     )
 
     session['loggedin'] = True
-    session["id"] = id_info.get("sub")
+    session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
     session["picture"] = id_info.get("picture")
     session['role_id'] = 2
+    dbconn = getCursor()
+    dbconn.execute(queries.googleRegister(), (session['name'],session['role_id']))
+    dbconn.execute(queries.googleUser(), (session['name'], ))
+    googleUser=dbconn.fetchone()
+    session['id'] = googleUser[0]
     return redirect("/dashboard")
 
 @app.route('/logout')
