@@ -63,16 +63,15 @@
                 <i class="bx bx-chevron-down"></i>
             </div>
             <div class="profile_dd">
-                <h3>
-                    {{session["name"]}}
-                <div>
-                    Member
-                </div>
-            </h3>
+                <h3>{{session["name"]}}
+                   <div>
+                       Member
+                   </div>
+                </h3>
                 <ul class="profile_ul">
                 <li><a href="#"><i class="fas fa-user-alt"></i></span>Profile</a></li>
-                <li><a class="address" href="/bookings?id={{session.id}}"><span class="picon"><i class="fas fa-map-marker"></i></span>Bookings</a></li>
-                <li><a class="settings" href="#"><span class="picon"><i class="fas fa-cog"></i></span>Messages</a></li>
+                <li><a class="settings" href="/dashboard"><span class="picon"><i class="bx bx-grid-alt"></i></span>Dashboard</a></li>
+                <li><a class="address" href="/bookings?id={{session.id}}"><span class="picon"><i class="bx bx-list-ul"></i></span>Bookings</a></li>
                 <li><a class="logout" href="/logout"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
                 </ul>
             </div>
