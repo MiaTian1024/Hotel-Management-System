@@ -54,9 +54,9 @@
        </div>
     </section>
     <div class="bill-button">
-     <form method="POST" action="/newBooking">
-        <input type="hidden" name="bookingId" value="" />   
-        <a type="submit" href="/newBooking?">Continue To Payment</a>
+     <form method="POST" action="/bookings">
+        <input type="hidden" name="bookingId" value="{{billInfo[0]}}" />   
+        <button type="submit">Continue To Payment</button>
      </form>
     </div>
 </main>

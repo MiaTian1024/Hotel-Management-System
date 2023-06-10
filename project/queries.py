@@ -41,7 +41,7 @@ def addBooking():
     return query
 
 def bookingInfo():
-    query=('select * from Bookings where user_id=%s;')
+    query=('select * from Bookings join RoomTypes on Bookings.room_type_id = RoomTypes.type_id where user_id=%s order by booking_id desc;')
     return query
 
 def bookingBill():
@@ -54,4 +54,8 @@ def billInfo():
           from Bookings
           join RoomTypes on Bookings.room_type_id = RoomTypes.type_id where booking_id=%s;
     ''')
+    return query
+
+def billConfirm():
+    query=('update Bookings set status = "Confirmed" where booking_id=%s;')
     return query

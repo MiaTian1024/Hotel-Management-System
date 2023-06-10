@@ -179,12 +179,6 @@ def dashboard():
         roomInfo = dbconn.fetchall()
         return render_template("dashboard.html", title="Dashboard", roomInfo=roomInfo, session=session)
     
-@app.route("/bookings")
-def bookings():
-    dbconn = getCursor()
-    dbconn.execute(queries.bookingInfo(), (session['id'],))
-    bookingInfo=dbconn.fetchall()
-    return render_template("bookings.html", title="Booking", bookingInfo=bookingInfo, session=session)
 
 @app.route("/service")
 def service():
@@ -246,14 +240,31 @@ def bill():
     print(breakfastPrice)
     print(extraBedPrice)
     return render_template("bill.html", 
-                           title="Bill", 
-                           billInfo=billInfo, 
-                           service=service, 
-                           breakfastPrice=breakfastPrice,  
-                           extraBedPrice=extraBedPrice,
-                           roomPrice=roomPrice,
-                           totalAmount=totalAmount,
-                           session=session)
+                        title="Bill", 
+                        billInfo=billInfo, 
+                        service=service, 
+                        breakfastPrice=breakfastPrice,  
+                        extraBedPrice=extraBedPrice,
+                        roomPrice=roomPrice,
+                        totalAmount=totalAmount,
+                        session=session)
+
+@app.route("/bookings", methods=["GET", "POST"])
+def bookings():
+    if request.method == 'POST':
+         bookingId=request.form.get('bookingId')
+         dbconn = getCursor()
+         dbconn.execute(queries.billConfirm(), (bookingId,))
+         billInfo=dbconn.fetchone()
+         dbconn.execute(queries.bookingInfo(), (session['id'],))
+         bookingInfo=dbconn.fetchall()
+         msg="Thank you for your payment, your room has been confirmed"
+         return render_template("bookings.html", msg=msg, bookingInfo=bookingInfo, billInfo=billInfo, session=session)
+    dbconn = getCursor()
+    dbconn.execute(queries.bookingInfo(), (session['id'],))
+    bookingInfo=dbconn.fetchall()
+    return render_template("bookings.html", title="Booking", bookingInfo=bookingInfo, session=session)
+   
 
 @app.route("/invoice")
 def invoice():
