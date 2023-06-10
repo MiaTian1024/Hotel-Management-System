@@ -52,13 +52,13 @@
                
             {%else%}
             <div class="notification_dd"> 
-                No notifiction
+                <p style="font-size:16px; padding:10px; color: black">No notifiction</p>
             </div>
             {% endif %}
         </div>
         <div class='profile' onclick="profileToggle();">
             <div class="icon_wrap">
-                <img src="../static/image/profile.jpg" alt="" /> 
+                <img src="../static/image/user.jpg" alt="" /> 
                 <span class="name">{{session["name"]}}</span>   
                 <i class="bx bx-chevron-down"></i>
             </div>

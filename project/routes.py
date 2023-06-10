@@ -216,6 +216,7 @@ def newBooking():
        check_out_date=request.form.get('check_out_date')
        status="Pending"
        user_id=session['id']
+       print(user_id)
        dbconn=getCursor()
        dbconn.execute(queries.addBooking(), (user_id, fullName, phone, roomType, check_in_date, check_out_date, breakfast, extraBed, status))      
        msg = 'You have successfully booked this room!'
