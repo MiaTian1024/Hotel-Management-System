@@ -4,18 +4,18 @@
 
 {% include "navbar.html" %} 
     <div class="home-content">
-      <form class="search-box">
+      <form class="search-box"  method="POST" action="/searchRoom">
       <div class="overview-boxes">      
        
           <div class="box">
            
               <div class="input-field">
                
-                <select required>
+                <select name="typeName" required>
                     <option disabled selected>Room Type</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Others</option>
+                    <option value ="Standard Room">Standard Room</option>
+                    <option value="Deluxe Room">Deluxe Room</option>
+                    <option value="Suite">Suite</option>
                 </select>
               </div>
             </div>
@@ -28,7 +28,7 @@
 
             <div class="box">
               <div class="input-field">    
-                <input type="text" name = "check_in_date" onfocus="(this.type='date')" placeholder="check_out_date">
+                <input type="text" name = "check_out_date" onfocus="(this.type='date')" placeholder="check_out_date">
               </div>
 
             </div>
@@ -42,8 +42,46 @@
     </form> 
     </div>
 
-    <section class="rooms" style="padding:0;" >
+    {% if roomSearch  %}
+
+    <section class="rooms" style="padding:0;" >   
+      <ul class="cards" style="align-item:center">  
+        {% for info in roomSearch %}   
+        <li class="card">
+          <div class="room-image">
+            {% if info[0] == 1 %}
+            <img src="../static/image/standard.jpg" alt="img">
+            {% elif info[0] == 2%}
+            <img src="../static/image/deluxe.jpg" alt="img">
+            {% elif info[0] == 3%}
+            <img src="../static/image/suite.jpg" alt="img">
+            {% endif %}
+          </div>
+          <div class="room-detail">
+            <div class="room-info">
+              <span class="room-name">{{info[1]}}</span>
+              <p>{{info[3]}}</p>  
+            </div>
+            <div class="room-price">
+              <div class="price">
+                <span class="price_num"> $ {{info[2]}}</span>
+                <span class="price_letter">Per Night</span>
+              </div>
+            </div>
+          
+            <div class="room-button">
+              <a href="/newBooking?type={{info[0]}}">BOOK</a>
+            </div>
+        </div>
+        </li>
+        {% endfor %}
+      </ul>
      
+    </section>
+
+    {% else %}
+   
+    <section class="rooms" style="padding:0;" >   
       <ul class="cards">  
         {% for info in roomInfo %}   
         <li class="card">
@@ -78,6 +116,7 @@
      
     </section>
 
+    {% endif %}
 
     <script src="static/js/dashboard.js"></script>
 

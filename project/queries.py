@@ -21,6 +21,10 @@ def roomInfo():
     query=('select * from RoomTypes')
     return query
 
+def searchRoom():
+    query=('select * from RoomTypes where type_name=%s')
+    return query
+
 def service():
     query=('select * from Service')
     return query

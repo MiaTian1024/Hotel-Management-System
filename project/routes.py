@@ -194,6 +194,16 @@ def roomtypes():
     roomtypes = dbconn.fetchall()
     return render_template("roomTypes.html", title="Room Types", session=session, roomtypes=roomtypes)
 
+@app.route("/searchRoom" , methods=["POST"])
+def searchRoom():
+    typeName=request.form.get('typeName')
+    check_in_date=request.form.get('check_in_date')
+    check_out_date=request.form.get('check_out_date')
+    dbconn = getCursor()
+    dbconn.execute(queries.searchRoom(), (typeName, ))
+    roomSearch = dbconn.fetchall()
+    return render_template("dashboard.html", title="Room Search", typeName=typeName, check_in_date=check_in_date, check_out_date=check_out_date, session=session, roomSearch=roomSearch)
+
 @app.route("/newBooking" , methods=["GET", "POST"])
 def newBooking():
     if request.method == 'POST':
@@ -208,15 +218,12 @@ def newBooking():
        user_id=session['id']
        dbconn=getCursor()
        dbconn.execute(queries.addBooking(), (user_id, fullName, phone, roomType, check_in_date, check_out_date, breakfast, extraBed, status))      
-       msg = 'You have successfully booked!'
+       msg = 'You have successfully booked this room!'
        dbconn.execute(queries.typeInfo(), (roomType, ))
        roomInfo=dbconn.fetchone()  
        dbconn.execute(queries.bookingBill(), (user_id, ))
-       billInfo=dbconn.fetchone()  
-       print(billInfo)
-       
+       billInfo=dbconn.fetchone()        
        return render_template("newBooking.html", msg=msg, title="Booking", billInfo=billInfo, roomInfo=roomInfo, session=session)
-
     roomtype=request.args.get('type')
     dbconn = getCursor()
     dbconn.execute(queries.typeInfo(), (roomtype, ))
@@ -235,10 +242,6 @@ def bill():
     breakfastPrice=service[0][2] * billInfo[6]
     extraBedPrice=service[1][2] * billInfo[7]
     totalAmount=roomPrice + breakfastPrice + extraBedPrice
-    print(service)
-    print(roomPrice)
-    print(breakfastPrice)
-    print(extraBedPrice)
     return render_template("bill.html", 
                         title="Bill", 
                         billInfo=billInfo, 
@@ -258,7 +261,7 @@ def bookings():
          billInfo=dbconn.fetchone()
          dbconn.execute(queries.bookingInfo(), (session['id'],))
          bookingInfo=dbconn.fetchall()
-         msg="Thank you for your payment, your room has been confirmed"
+         msg="Thank you for your payment. Your room has been confirmed."
          return render_template("bookings.html", msg=msg, bookingInfo=bookingInfo, billInfo=billInfo, session=session)
     dbconn = getCursor()
     dbconn.execute(queries.bookingInfo(), (session['id'],))
@@ -271,7 +274,7 @@ def confirmCancel():
     dbconn = getCursor()
     billId = request.args.get('billId')
     if billId:
-        confirmMsg="Are you sure you want to cancel this bill?"    
+        confirmMsg="Are you sure you want to cancel this booking?"    
         dbconn.execute(queries.bookingInfo(), (session['id'],))
         bookingInfo=dbconn.fetchall()
         return render_template("bookings.html", title="Booking", billId=billId, confirmMsg=confirmMsg, bookingInfo=bookingInfo, session=session)
@@ -280,7 +283,7 @@ def confirmCancel():
 def cancelBill():
         billId = request.args.get('billId')
         dbconn.execute(queries.billCancel(), (billId, ))
-        cancelMsg="You have successfully canceled this bill."
+        cancelMsg="You have successfully canceled this booking."
         dbconn.execute(queries.bookingInfo(), (session['id'],))
         bookingInfo=dbconn.fetchall()
         return render_template("bookings.html", title="Booking", cancelMsg=cancelMsg, session=session, bookingInfo=bookingInfo)

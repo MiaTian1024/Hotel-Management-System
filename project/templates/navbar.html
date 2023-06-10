@@ -21,42 +21,40 @@
         <div class="notifications"  onclick="notificationToggle();">
             <div class="icon_wrap"><i class='bx bx-bell'></i></div>
             
+            {% if bookingInfo %}
+            
             <div class="notification_dd">
+                {% for booking in bookingInfo %}
                 <ul class="notification_ul">
                     <li class="success">
                         <div class="notify_data">
                             <div class="title">
-                                Lorem, ipsum dolor.  
+                                Booking For {{booking[2]}}  
                             </div>
                         </div>
+                        {% if booking[9] == "Confirmed" %}
                         <div class="notify_status">
-                            <p>Success</p>  
+                            <p style="color: #47da89;">{{booking[9]}}</p>  
                         </div>
+                        {% elif booking[9] == "Cancelled"%}
+                        <div class="notify_status" >
+                            <p style="color: #fb0001;">{{booking[9]}}</p>  
+                        </div>
+                        {% elif booking[9] == "Pending"%}
+                        <div class="notify_status" >
+                            <p style="color: #fbcd00;">{{booking[9]}}</p>  
+                        </div>
+                        {% endif %}
                     </li>  
-
-                    <li class="failed">
-                        <div class="notify_data">
-                            <div class="title">
-                                Lorem, ipsum dolor.  
-                            </div>
-                        </div>
-                        <div class="notify_status">
-                            <p>Failed</p>  
-                        </div>
-                    </li> 
-
-                    <li class="pending">
-                        <div class="notify_data">
-                            <div class="title">
-                                Lorem, ipsum dolor.  
-                            </div>
-                        </div>
-                        <div class="notify_status">
-                            <p>Pending</p>  
-                        </div>
-                    </li> 
                 </ul>
-            </div>        
+                {% endfor %} 
+            </div> 
+               
+            {%else%}
+            <div class="notification_dd"> 
+                No notifiction
+            </div>
+            {% endif %}
         </div>
         <div class='profile' onclick="profileToggle();">
             <div class="icon_wrap">
