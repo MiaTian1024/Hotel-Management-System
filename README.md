@@ -24,16 +24,17 @@ This is a fully functional full-stack web application. The database was construc
 <img src="screenshot/book.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
 ------
 #### Notifications 
-<img src="screenshot/notification-booking.png" alt="Screenshot" style="width: 300px; height: auto;"> 
-<img src="screenshot/notification-cancel.png" alt="Screenshot" style="width: 300px; height: auto;">
-<img src="screenshot/cancel-success.png" alt="Screenshot" style="width: 300px; height: auto;"> 
-<img src="screenshot/notification-payment.png" alt="Screenshot" style="width: 300px; height: auto;"> 
+![Image Name](screenshot/notification-booking.png)
+<span><img src="screenshot/notification-booking.png" alt="Screenshot" style="width: 300px; height: auto;"></span> 
+<span><img src="screenshot/notification-cancel.png" alt="Screenshot" style="width: 300px; height: auto;"></span>
+<span><img src="screenshot/cancel-success.png" alt="Screenshot" style="width: 300px; height: auto;"> </span>
+<span><img src="screenshot/notification-payment.png" alt="Screenshot" style="width: 300px; height: auto;"> </span>
 ------
 #### Dropdown 
 <img src="screenshot/profile dropdown.png" alt="Screenshot" style="width: 300px; height: auto;"> 
 <img src="screenshot/notification-dropdown.png" alt="Screenshot" style="width: 300px; height: auto;">
 ------
 #### Bill Information
-<img src="screenshot/bill.png" alt="Screenshot" style="width: 600px; height: auto;"> 
+<img src="screenshot/bill .png" alt="Screenshot" style="width: 600px; height: auto;"> 
 ------
 
