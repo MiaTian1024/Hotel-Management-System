@@ -3,7 +3,7 @@ This is a fully functional full-stack web application. The database was construc
 #### View the Website: http://miatian.pythonanywhere.com/
 
 ### Database ER Diagram  
-<img src="screenshot/ER diagram.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
+<img src="screenshot/ER Diagram.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
 ------
 #### Homepage
 <img src="screenshot/hompage.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
