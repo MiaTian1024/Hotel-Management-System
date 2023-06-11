@@ -12,9 +12,28 @@ This is a fully functional full-stack web application. The database was construc
 <img src="screenshot/customer dashboard.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
 ------
 #### Login page
-<img src="screenshot/login page.png" alt="Screenshot" style="width: 300px; height: auto;"> 
+<img src="screenshot/login page.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
+------
 #### Sign up Page
-<img src="screenshot/signup page.png" alt="Screenshot" style="width: 300px; height: auto;"> 
+<img src="screenshot/signup page.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
+------
 #### Signin using Google account 
-<img src="screenshot/google signin.png" alt="Screenshot" style="width: 300px; height: auto;"> 
+<img src="screenshot/google signin.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
+------
+#### Book a room 
+<img src="screenshot/book.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
+------
+#### Notifications 
+<img src="screenshot/notification-booking.png" alt="Screenshot" style="width: 300px; height: auto;"> 
+<img src="screenshot/notification-cancel.png" alt="Screenshot" style="width: 300px; height: auto;">
+<img src="screenshot/cancel-success.png" alt="Screenshot" style="width: 300px; height: auto;"> 
+<img src="screenshot/notification-payment.png" alt="Screenshot" style="width: 300px; height: auto;"> 
+------
+#### Dropdown 
+<img src="screenshot/profile dropdown.png" alt="Screenshot" style="width: 300px; height: auto;"> 
+<img src="screenshot/notification-dropdown.png" alt="Screenshot" style="width: 300px; height: auto;">
+------
+#### Bill Information
+<img src="screenshot/bill.png" alt="Screenshot" style="width: 600px; height: auto;"> 
+------
 
