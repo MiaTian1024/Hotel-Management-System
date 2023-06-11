@@ -1,0 +1,8 @@
+Flask
+google-auth
+google-auth-oauthlib
+Jinja2
+oauthlib
+cachetools
+requests
+requests-oauthlib
