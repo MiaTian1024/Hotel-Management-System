@@ -3,7 +3,7 @@ This is a fully functional full-stack web application. The database was construc
 #### View the Website: http://miatian.pythonanywhere.com/
 
 ### Database ER Diagram  
-<img src="screenshot/ER Diagram.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
+<img src="screenshot/ER diagram.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
 ------
 #### Homepage
 <img src="screenshot/hompage.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
@@ -23,18 +23,18 @@ This is a fully functional full-stack web application. The database was construc
 #### Book a room 
 <img src="screenshot/book.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
 ------
+#### Bill Information
+<img src="screenshot/bill .png" alt="Screenshot" style="width: 600px; height: auto;"><br>
+------
+
 #### Notifications 
-![Image Name](screenshot/notification-booking.png)
 <span><img src="screenshot/notification-booking.png" alt="Screenshot" style="width: 300px; height: auto;"></span> 
 <span><img src="screenshot/notification-cancel.png" alt="Screenshot" style="width: 300px; height: auto;"></span>
 <span><img src="screenshot/cancel-success.png" alt="Screenshot" style="width: 300px; height: auto;"> </span>
-<span><img src="screenshot/notification-payment.png" alt="Screenshot" style="width: 300px; height: auto;"> </span>
+<span><img src="screenshot/notification-payment.png" alt="Screenshot" style="width: 300px; height: auto;"> </span><br>
 ------
 #### Dropdown 
-<img src="screenshot/profile dropdown.png" alt="Screenshot" style="width: 300px; height: auto;"> 
-<img src="screenshot/notification-dropdown.png" alt="Screenshot" style="width: 300px; height: auto;">
-------
-#### Bill Information
-<img src="screenshot/bill .png" alt="Screenshot" style="width: 600px; height: auto;"> 
+<span><img src="screenshot/profile dropdown.png" alt="Screenshot" style="width: 300px; height: auto;"> </span>
+<span><img src="screenshot/notification-dropdown.png" alt="Screenshot" style="width: 300px; height: auto;"></span><br>
 ------
 
