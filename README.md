@@ -23,6 +23,9 @@ This is a fully functional full-stack web application. The database was construc
 #### Book a room 
 <img src="screenshot/book.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
 ------
+#### Book a room 
+<img src="screenshot/booking dashboard.png" alt="Screenshot" style="width: 600px; height: auto;"> <br>
+------
 #### Bill Information
 <img src="screenshot/bill .png" alt="Screenshot" style="width: 600px; height: auto;"><br>
 ------
